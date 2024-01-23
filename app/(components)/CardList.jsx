@@ -1,6 +1,5 @@
 import React from "react";
-import Card from "./card";
-
+import Card from "./Card";
 const getContracts = async () => {
   try {
     const res = await fetch("http://localhost:3000/api/Contracts", {
