@@ -29,7 +29,7 @@ const Card = ({ contract }) => {
         <StatusDisplay status={contract.status} />
         <div>
           <DeleteBlock id={contract._id} />
-          <Link href={`/Contract/${contract._id}`} className="px-3">
+          <Link href={`/admin/Contract/${contract._id}`} className="px-3">
             <FontAwesomeIcon icon={faEdit} />
           </Link>
         </div>

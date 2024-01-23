@@ -41,7 +41,7 @@ const ContractForm = ({contract}) => {
         }
     }
 
-    router.push("/");
+    router.push("/admin");
     router.refresh();
   };
   const startingContractData = {

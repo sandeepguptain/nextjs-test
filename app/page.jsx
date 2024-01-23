@@ -1,54 +1,50 @@
-import React from "react";
-import Card from "./(components)/card";
+"use client";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-const getContracts = async () => {
-  try {
-    const res = await fetch("http://localhost:3000/api/Contracts", {
-      cache: "no-store",
-    });
-    return res.json();
-  } catch (e) {
-    console.log("Error fetching", e);
-  }
-};
+const IndexPage = () => {
+  const router = useRouter();
+  const [userInput, setUserInput] = useState("");
 
-const Dashboard = async () => {
+  useEffect(() => {
+    const savedInput = localStorage.getItem("userInput");
+    if (savedInput) {
+      setUserInput(savedInput);
+      handleNavigation(savedInput);
+    }
+  }, []);
 
-  const data = await getContracts();
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    handleNavigation(userInput);
+  };
 
-  if (!data?.contracts) {
-    return <p>No contracts.</p>;
-  }
+  const handleNavigation = (input) => {
+    localStorage.setItem("userInput", input);
 
-  const contracts = data.contracts;
-
-  const uniqueCategories = [
-    ...new Set(contracts?.map(({ category }) => category)),
-  ];
+    if (input === "admin") {
+      router.push("/admin");
+    } else if (input === "sandeep") {
+      router.push("/sandeep");
+    }
+  };
 
   return (
-    <div className="p-5">
-      <div>
-        {contracts &&
-          uniqueCategories?.map((uniqueCategory, categoryIndex) => (
-            <div key={categoryIndex} className="mb-4">
-              <h4>{uniqueCategory}</h4>
-              <div className="lg:grid grid-cols-2 xl:grid-cols-4 ">
-                {contracts
-                  .filter((ticket) => ticket.category === uniqueCategory)
-                  .map((contract, _index) => (
-                    <Card
-                      id={_index}
-                      key={_index}
-                      contract={contract}
-                    />
-                  ))}
-              </div>
-            </div>
-          ))}
+    <div className="flex justify-center h-screen items-center">
+    <form onSubmit={handleFormSubmit}>
+      <div className="flex items-center">
+        <input
+          type="text"
+          value={userInput}
+          className="w-96"
+          placeholder="Enter username"
+          onChange={(e) => setUserInput(e.target.value)}
+        />
+      <button type="submit" className="btn w-40 ml-auto h-8 ">Submit</button>
       </div>
+    </form>
     </div>
   );
 };
 
-export default Dashboard;
+export default IndexPage;
