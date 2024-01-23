@@ -12,7 +12,7 @@ const  DeleteBlock = ({id}) => {
         if(!confirmation){
             return
         }
-        const res = await fetch(`http://localhost:3000/api/Contracts/${id}`, {
+        const res = await fetch(`/api/Contracts/${id}`, {
           method: "DELETE",
         });
 

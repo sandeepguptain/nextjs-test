@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./Card";
 const getContracts = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/Contracts", {
+    const res = await fetch(`${process.env.URL}/api/Contracts`, {
       cache: "no-store",
     });
     return res.json();

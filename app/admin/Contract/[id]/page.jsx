@@ -1,6 +1,6 @@
 import ContractForm from "@/app/(components)/ContractForm"
 const getContractByid = async (id) => { 
-    const rest =  await fetch(`http://localhost:3000/api/Contracts/${id}`, {
+    const rest =  await fetch(`${process.env.URL}/api/Contracts/${id}`, {
       cache: "no-store",
     })
     if(!rest.ok){
