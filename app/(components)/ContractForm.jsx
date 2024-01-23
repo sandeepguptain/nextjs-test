@@ -51,6 +51,7 @@ const ContractForm = ({contract}) => {
     priority: 1,
     progress: 0,
     status: "not started",
+    isAccepted: false,
   };
 
   if(EDITMODE){

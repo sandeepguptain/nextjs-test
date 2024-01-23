@@ -10,7 +10,7 @@ const contractSchema = new Schema({
     priority: String,
     progress: String,
     status: String,
-    active: Boolean
+    isAccepted: Boolean
 },
 {
     timestamps: true,

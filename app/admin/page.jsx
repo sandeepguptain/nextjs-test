@@ -1,11 +1,15 @@
-import React from 'react'
-import CardList from '../(components)/CardList'
+import React from "react";
+import CardList from "../(components)/CardList";
+import { Suspense } from "react";
+
 const page = () => {
   return (
     <div>
-       <CardList />
+      <Suspense fallback={<p className="text-xs text-center p-7">Loading...</p>}>
+        <CardList />
+      </Suspense>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

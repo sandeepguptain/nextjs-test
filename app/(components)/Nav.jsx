@@ -34,11 +34,11 @@ const Nav = () => {
           Contract
         </Link>
       </div>}
-      <div className="flex gap-2">
+      <div className="flex gap-5">
         <p className="text-default-text">{savedInput}</p>
         <FontAwesomeIcon
           icon={faPowerOff}
-          className="icon"
+          className="icon cursor-pointer"
           onClick={handleNavigation}
         />
       </div>
